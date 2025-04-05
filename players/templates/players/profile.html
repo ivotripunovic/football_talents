@@ -1,0 +1,80 @@
+{% extends 'players/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2>Player Profile</h2>
+                <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+            </div>
+            <div class="card-body">
+                {% if player %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Personal Information</h4>
+                            <table class="table">
+                                <tr>
+                                    <th>Name:</th>
+                                    <td>{{ player.user.get_full_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Position:</th>
+                                    <td>{{ player.get_position_display }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Height:</th>
+                                    <td>{{ player.height }} cm</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight:</th>
+                                    <td>{{ player.weight }} kg</td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Birth:</th>
+                                    <td>{{ player.date_of_birth }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nationality:</th>
+                                    <td>{{ player.nationality }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Player Characteristics</h4>
+                            <table class="table">
+                                <tr>
+                                    <th>Preferred Foot:</th>
+                                    <td>{{ player.get_preferred_foot_display }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Jersey Number:</th>
+                                    <td>{{ player.jersey_number|default:"Not assigned" }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Speed:</th>
+                                    <td>{{ player.speed|default:"Not rated" }}/100</td>
+                                </tr>
+                                <tr>
+                                    <th>Strength:</th>
+                                    <td>{{ player.strength|default:"Not rated" }}/100</td>
+                                </tr>
+                                <tr>
+                                    <th>Stamina:</th>
+                                    <td>{{ player.stamina|default:"Not rated" }}/100</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        No profile information available. Please complete your profile.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

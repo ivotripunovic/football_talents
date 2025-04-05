@@ -1,0 +1,68 @@
+{% extends 'players/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Football Talent</h1>
+        <p class="lead">Discover and connect with football talents from around the world.</p>
+        <hr class="my-4">
+        <p>Join our community to showcase your skills or find the next star player for your team.</p>
+        {% if not user.is_authenticated %}
+            <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Register Now</a>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+        {% endif %}
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Recent Players</h2>
+            <div class="row">
+                {% for player in recent_players %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ player.user.get_full_name }}</h5>
+                            <p class="card-text">
+                                <strong>Position:</strong> {{ player.position }}<br>
+                                <strong>Club:</strong> {{ player.current_club }}<br>
+                                <strong>Nationality:</strong> {{ player.nationality }}
+                            </p>
+                            
+                                <a href="{% url 'profile' player.id %}" class="btn btn-primary">View Profile</a>
+                             
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">For Players</h5>
+                    <p class="card-text">Create your profile and showcase your talents to clubs and scouts worldwide.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">For Scouts</h5>
+                    <p class="card-text">Discover promising talents and track their progress.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">For Clubs</h5>
+                    <p class="card-text">Find the perfect players to strengthen your team.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
