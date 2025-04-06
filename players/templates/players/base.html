@@ -17,10 +17,13 @@
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                            <a class="nav-link" href="{% url 'profile' user.id %}">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+			    <form method="post" action="{% url 'logout' %}">
+				{% csrf_token %}
+				<button class="nav-link" htype="submit">Logout</button>
+			    </form>
                         </li>
                     {% else %}
                         <li class="nav-item">
