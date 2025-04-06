@@ -35,9 +35,9 @@ def register(request):
     })
 
 @login_required
-def profile(request):
+def profile(request, player_id):
     try:
-        player = Player.objects.get(user=request.user)
+        player = Player.objects.get(pk=player_id)
     except Player.DoesNotExist:
         player = None
     
