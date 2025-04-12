@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import URLValidator
 
 class Player(models.Model):
     POSITION_CHOICES = [
@@ -19,6 +20,7 @@ class Player(models.Model):
     state = models.CharField(max_length=100, help_text="State/Province of residence", blank=True, null=True)
     city = models.CharField(max_length=100, help_text="City of residence", blank=True, null=True)
     club = models.CharField(max_length=100, help_text="Current football club", blank=True, null=True)
+    fifa_profile_url = models.URLField(max_length=255, help_text="Link to official FIFA profile", blank=True, null=True, validators=[URLValidator()])
     preferred_foot = models.CharField(max_length=10, choices=[('L', 'Left'), ('R', 'Right'), ('B', 'Both')])
     jersey_number = models.IntegerField(null=True, blank=True)
     speed = models.IntegerField(help_text="Speed rating (1-100)", null=True, blank=True)

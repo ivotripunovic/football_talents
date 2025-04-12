@@ -56,6 +56,18 @@
                                     <th>Club:</th>
                                     <td>{{ player.club|default:"Not specified" }}</td>
                                 </tr>
+                                <tr>
+                                    <th>FIFA Profile:</th>
+                                    <td>
+                                        {% if player.fifa_profile_url %}
+                                            <a href="{{ player.fifa_profile_url }}" target="_blank" class="btn btn-sm btn-info">
+                                                <i class="fas fa-external-link-alt"></i> View FIFA Profile
+                                            </a>
+                                        {% else %}
+                                            Not available
+                                        {% endif %}
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                         <div class="col-md-6">

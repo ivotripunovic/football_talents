@@ -14,8 +14,9 @@ class PlayerProfileForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = ['position', 'height', 'weight', 'date_of_birth', 'nationality', 
-                 'country', 'state', 'city', 'club',
+                 'country', 'state', 'city', 'club', 'fifa_profile_url',
                  'preferred_foot', 'jersey_number', 'speed', 'strength', 'stamina']
         widgets = {
             'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
+            'fifa_profile_url': forms.URLInput(attrs={'placeholder': 'https://www.fifa.com/player/...'}),
         } 

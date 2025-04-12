@@ -1,7 +1,14 @@
 # Football Talents Project - Task Tracking
 
 ## Current Features in Progress
-- [ ] Player Location and Club Information
+- [x] FIFA Profile Integration
+  - [x] Add FIFA profile URL field to Player model
+  - [x] Update forms to include FIFA profile link
+  - [x] Add FIFA profile link to player profile page
+  - [x] Add validation for FIFA profile URL
+  - [x] Update admin interface
+
+- [x] Player Location and Club Information
   - [x] Add country field to Player model
   - [x] Add state/province field to Player model
   - [x] Add city field to Player model
