@@ -40,6 +40,22 @@
                                     <th>Nationality:</th>
                                     <td>{{ player.nationality }}</td>
                                 </tr>
+                                <tr>
+                                    <th>Country:</th>
+                                    <td>{{ player.country }}</td>
+                                </tr>
+                                <tr>
+                                    <th>State/Province:</th>
+                                    <td>{{ player.state|default:"Not specified" }}</td>
+                                </tr>
+                                <tr>
+                                    <th>City:</th>
+                                    <td>{{ player.city }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Club:</th>
+                                    <td>{{ player.club|default:"Not specified" }}</td>
+                                </tr>
                             </table>
                         </div>
                         <div class="col-md-6">

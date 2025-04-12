@@ -14,6 +14,7 @@ class PlayerProfileForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = ['position', 'height', 'weight', 'date_of_birth', 'nationality', 
+                 'country', 'state', 'city', 'club',
                  'preferred_foot', 'jersey_number', 'speed', 'strength', 'stamina']
         widgets = {
             'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
