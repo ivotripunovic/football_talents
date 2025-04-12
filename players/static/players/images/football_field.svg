@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Field background -->
+    <rect width="800" height="600" fill="#4CAF50"/>
+    
+    <!-- Center circle -->
+    <circle cx="400" cy="300" r="50" fill="none" stroke="white" stroke-width="2"/>
+    <line x1="400" y1="0" x2="400" y2="600" stroke="white" stroke-width="2"/>
+    
+    <!-- Penalty areas -->
+    <rect x="0" y="150" width="100" height="300" fill="none" stroke="white" stroke-width="2"/>
+    <rect x="700" y="150" width="100" height="300" fill="none" stroke="white" stroke-width="2"/>
+    
+    <!-- Goal areas -->
+    <rect x="0" y="225" width="50" height="150" fill="none" stroke="white" stroke-width="2"/>
+    <rect x="750" y="225" width="50" height="150" fill="none" stroke="white" stroke-width="2"/>
+    
+    <!-- Corner arcs -->
+    <path d="M0,0 A20,20 0 0,1 20,20" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M800,0 A20,20 0 0,0 780,20" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M0,600 A20,20 0 0,0 20,580" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M800,600 A20,20 0 0,1 780,580" fill="none" stroke="white" stroke-width="2"/>
+</svg> 

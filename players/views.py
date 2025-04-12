@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegistrationForm, PlayerProfileForm
-from .models import Player
+from .models import Player, Position
 
 # Create your views here.
 
@@ -31,7 +31,8 @@ def register(request):
     
     return render(request, 'players/register.html', {
         'user_form': user_form,
-        'player_form': player_form
+        'player_form': player_form,
+        'positions': Position.objects.all()
     })
 
 @login_required

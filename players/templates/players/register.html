@@ -23,6 +23,18 @@
                             {{ player_form|crispy }}
                         </div>
                     </div>
+                    
+                    <!-- Position Selector -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4>Select Your Positions</h4>
+                            {% include 'players/position_selector.html' with positions=positions %}
+                            <div class="d-none">
+                                {{ player_form.positions }}
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="text-center mt-4">
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>

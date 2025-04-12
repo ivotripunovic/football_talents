@@ -1,7 +1,7 @@
 {% load static %}
 <div class="football-field-container">
     <div class="football-field">
-        <img src="{% static 'players/images/football_field.png' %}" alt="Football Field" class="field-image">
+        <img src="{% static 'players/images/football_field.svg' %}" alt="Football Field" class="field-image">
         {% for position in positions %}
             <div class="position-marker" 
                  data-position-id="{{ position.id }}"
@@ -9,8 +9,13 @@
                  title="{{ position.name }}"
                  onclick="togglePosition(this)">
                 <span class="position-code">{{ position.code }}</span>
+                <div class="position-tooltip">{{ position.name }}</div>
             </div>
         {% endfor %}
+    </div>
+    <div class="selected-positions">
+        <h4>Selected Positions:</h4>
+        <div id="selected-positions-list"></div>
     </div>
 </div>
 
@@ -20,23 +25,29 @@
     width: 100%;
     max-width: 800px;
     margin: 20px auto;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .football-field {
     position: relative;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .field-image {
     width: 100%;
     height: auto;
+    border-radius: 4px;
 }
 
 .position-marker {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.9);
     border: 2px solid #333;
     border-radius: 50%;
     display: flex;
@@ -45,6 +56,12 @@
     cursor: pointer;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.position-marker:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .position-marker.selected {
@@ -55,7 +72,66 @@
 
 .position-code {
     font-weight: bold;
+    font-size: 14px;
+}
+
+.position-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
     font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.position-marker:hover .position-tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 5px);
+}
+
+.selected-positions {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.selected-positions h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#selected-positions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selected-position-tag {
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.selected-position-tag .remove-btn {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
 }
 </style>
 
@@ -63,10 +139,41 @@
 function togglePosition(element) {
     element.classList.toggle('selected');
     const positionId = element.dataset.positionId;
+    const positionName = element.title;
     const checkbox = document.querySelector(`input[value="${positionId}"]`);
+    
     if (checkbox) {
         checkbox.checked = !checkbox.checked;
+        updateSelectedPositionsList();
     }
+}
+
+function updateSelectedPositionsList() {
+    const selectedList = document.getElementById('selected-positions-list');
+    const checkboxes = document.querySelectorAll('input[name="positions"]:checked');
+    
+    selectedList.innerHTML = '';
+    checkboxes.forEach(checkbox => {
+        const positionId = checkbox.value;
+        const positionName = checkbox.parentElement.textContent.trim();
+        const tag = document.createElement('div');
+        tag.className = 'selected-position-tag';
+        tag.innerHTML = `
+            ${positionName}
+            <span class="remove-btn" onclick="removePosition('${positionId}')">&times;</span>
+        `;
+        selectedList.appendChild(tag);
+    });
+}
+
+function removePosition(positionId) {
+    const checkbox = document.querySelector(`input[value="${positionId}"]`);
+    const marker = document.querySelector(`.position-marker[data-position-id="${positionId}"]`);
+    
+    if (checkbox) checkbox.checked = false;
+    if (marker) marker.classList.remove('selected');
+    
+    updateSelectedPositionsList();
 }
 
 // Initialize selected positions
@@ -80,5 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    updateSelectedPositionsList();
 });
 </script> 
