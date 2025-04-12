@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="1000" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
     <!-- Field background -->
-    <rect width="800" height="600" fill="#4CAF50"/>
+    <rect width="800" height="1000" fill="#4CAF50"/>
     
-    <!-- Center circle -->
-    <circle cx="400" cy="300" r="50" fill="none" stroke="white" stroke-width="2"/>
-    <line x1="400" y1="0" x2="400" y2="600" stroke="white" stroke-width="2"/>
+    <!-- Field outline -->
+    <rect x="50" y="50" width="700" height="900" fill="none" stroke="white" stroke-width="2"/>
     
-    <!-- Penalty areas -->
-    <rect x="0" y="150" width="100" height="300" fill="none" stroke="white" stroke-width="2"/>
-    <rect x="700" y="150" width="100" height="300" fill="none" stroke="white" stroke-width="2"/>
+    <!-- Center line and circle -->
+    <line x1="50" y1="500" x2="750" y2="500" stroke="white" stroke-width="2"/>
+    <circle cx="400" cy="500" r="50" fill="none" stroke="white" stroke-width="2"/>
+    <circle cx="400" cy="500" r="3" fill="white"/>
     
-    <!-- Goal areas -->
-    <rect x="0" y="225" width="50" height="150" fill="none" stroke="white" stroke-width="2"/>
-    <rect x="750" y="225" width="50" height="150" fill="none" stroke="white" stroke-width="2"/>
+    <!-- Top penalty area -->
+    <rect x="200" y="50" width="400" height="165" fill="none" stroke="white" stroke-width="2"/>
+    <!-- Top goal area -->
+    <rect x="300" y="50" width="200" height="66" fill="none" stroke="white" stroke-width="2"/>
+    <!-- Top goal -->
+    <rect x="350" y="40" width="100" height="10" fill="white"/>
+    
+    <!-- Bottom penalty area -->
+    <rect x="200" y="785" width="400" height="165" fill="none" stroke="white" stroke-width="2"/>
+    <!-- Bottom goal area -->
+    <rect x="300" y="884" width="200" height="66" fill="none" stroke="white" stroke-width="2"/>
+    <!-- Bottom goal -->
+    <rect x="350" y="950" width="100" height="10" fill="white"/>
+    
+    <!-- Penalty spots -->
+    <circle cx="400" cy="165" r="3" fill="white"/>
+    <circle cx="400" cy="835" r="3" fill="white"/>
+    
+    <!-- Penalty arcs -->
+    <path d="M 300 165 A 50 50 0 0 0 500 165" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M 300 835 A 50 50 0 0 1 500 835" fill="none" stroke="white" stroke-width="2"/>
     
     <!-- Corner arcs -->
-    <path d="M0,0 A20,20 0 0,1 20,20" fill="none" stroke="white" stroke-width="2"/>
-    <path d="M800,0 A20,20 0 0,0 780,20" fill="none" stroke="white" stroke-width="2"/>
-    <path d="M0,600 A20,20 0 0,0 20,580" fill="none" stroke="white" stroke-width="2"/>
-    <path d="M800,600 A20,20 0 0,1 780,580" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M50,50 A10,10 0 0,0 60,60" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M750,50 A10,10 0 0,1 740,60" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M50,950 A10,10 0 0,1 60,940" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M750,950 A10,10 0 0,0 740,940" fill="none" stroke="white" stroke-width="2"/>
 </svg> 
