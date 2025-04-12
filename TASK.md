@@ -1,6 +1,15 @@
 # Football Talents Project - Task Tracking
 
 ## Current Features in Progress
+- [x] Multiple Positions and Football Field Selector
+  - [x] Create Position model for storing position details
+  - [x] Update Player model to support multiple positions
+  - [x] Create football field template with position selection
+  - [x] Add JavaScript for dynamic position selection
+  - [x] Update forms to handle multiple positions
+  - [x] Update profile display to show selected positions
+  - [x] Update admin interface for multiple positions
+
 - [x] FIFA Profile Integration
   - [x] Add FIFA profile URL field to Player model
   - [x] Update forms to include FIFA profile link

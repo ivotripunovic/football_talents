@@ -1,0 +1,84 @@
+{% load static %}
+<div class="football-field-container">
+    <div class="football-field">
+        <img src="{% static 'players/images/football_field.png' %}" alt="Football Field" class="field-image">
+        {% for position in positions %}
+            <div class="position-marker" 
+                 data-position-id="{{ position.id }}"
+                 style="left: {{ position.x_coordinate }}%; top: {{ position.y_coordinate }}%;"
+                 title="{{ position.name }}"
+                 onclick="togglePosition(this)">
+                <span class="position-code">{{ position.code }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.football-field-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.football-field {
+    position: relative;
+    width: 100%;
+}
+
+.field-image {
+    width: 100%;
+    height: auto;
+}
+
+.position-marker {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.position-marker.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.position-code {
+    font-weight: bold;
+    font-size: 12px;
+}
+</style>
+
+<script>
+function togglePosition(element) {
+    element.classList.toggle('selected');
+    const positionId = element.dataset.positionId;
+    const checkbox = document.querySelector(`input[value="${positionId}"]`);
+    if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+    }
+}
+
+// Initialize selected positions
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('input[name="positions"]');
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            const marker = document.querySelector(`.position-marker[data-position-id="${checkbox.value}"]`);
+            if (marker) {
+                marker.classList.add('selected');
+            }
+        }
+    });
+});
+</script> 

@@ -2,16 +2,23 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import URLValidator
 
-class Player(models.Model):
-    POSITION_CHOICES = [
-        ('GK', 'Goalkeeper'),
-        ('DEF', 'Defender'),
-        ('MID', 'Midfielder'),
-        ('FWD', 'Forward'),
-    ]
+class Position(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.CharField(max_length=3, unique=True)
+    description = models.TextField(blank=True)
+    x_coordinate = models.FloatField(help_text="X coordinate on the football field (0-100)")
+    y_coordinate = models.FloatField(help_text="Y coordinate on the football field (0-100)")
+    is_primary = models.BooleanField(default=False, help_text="Is this a primary position?")
 
+    def __str__(self):
+        return f"{self.name} ({self.code})"
+
+    class Meta:
+        ordering = ['name']
+
+class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    position = models.CharField(max_length=3, choices=POSITION_CHOICES)
+    positions = models.ManyToManyField(Position, related_name='players')
     height = models.DecimalField(max_digits=5, decimal_places=2, help_text="Height in centimeters")
     weight = models.DecimalField(max_digits=5, decimal_places=2, help_text="Weight in kilograms")
     date_of_birth = models.DateField()
@@ -30,7 +37,8 @@ class Player(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.get_full_name()} - {self.position}"
+        positions = ", ".join([pos.name for pos in self.positions.all()])
+        return f"{self.user.get_full_name()} - {positions}"
 
     class Meta:
         ordering = ['user__last_name', 'user__first_name']
