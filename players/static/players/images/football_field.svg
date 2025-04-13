@@ -30,8 +30,8 @@
     <circle cx="400" cy="835" r="3" fill="white"/>
     
     <!-- Penalty arcs -->
-    <path d="M 300 165 A 50 50 0 0 0 500 165" fill="none" stroke="white" stroke-width="2"/>
-    <path d="M 300 835 A 50 50 0 0 1 500 835" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M 300 215 A 90 50 0 0 0 500 215" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M 300 785 A 90 50 0 0 1 500 785" fill="none" stroke="white" stroke-width="2"/>
     
     <!-- Corner arcs -->
     <path d="M50,50 A10,10 0 0,0 60,60" fill="none" stroke="white" stroke-width="2"/>
