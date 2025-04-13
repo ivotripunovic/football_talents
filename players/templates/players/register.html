@@ -20,18 +20,20 @@
                         </div>
                         <div class="col-md-6">
                             <h4>Player Information</h4>
-                            {{ player_form|crispy }}
-                        </div>
-                    </div>
-                    
-                    <!-- Position Selector -->
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <h4>Select Your Positions</h4>
-                            {% include 'players/position_selector.html' with positions=positions %}
-                            <div class="d-none">
-                                {{ player_form.positions }}
+                            <!-- Position Selector -->
+                            <div class="mb-4">
+                                <h5>Select Your Positions</h5>
+                                {% include 'players/position_selector.html' with positions=positions %}
+                                <div class="d-none">
+                                    {{ player_form.positions }}
+                                </div>
                             </div>
+                            <!-- Other player information fields -->
+                            {% for field in player_form %}
+                                {% if field.name != 'positions' %}
+                                    {{ field|as_crispy_field }}
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
 
