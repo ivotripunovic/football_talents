@@ -57,6 +57,18 @@
             "django": true,
             "justMyCode": false,
             "python": "${workspaceFolder}/venv/bin/python"
+        },
+        {
+            "name": "Django: Seed_Players",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "seed_players"
+            ],
+            "django": true,
+            "justMyCode": false,
+            "python": "${workspaceFolder}/venv/bin/python"
         }
     ]
 }
