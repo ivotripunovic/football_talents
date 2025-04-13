@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from players.models import Player, Position
 from datetime import date, timedelta
 import random
-from faker import Faker
 from players.models import Player
 from django.contrib.auth.models import User
 
@@ -11,7 +10,6 @@ class Command(BaseCommand):
     help = 'Seeds the database with realistic player data'
 
     def handle(self, *args, **kwargs):
-        fake = Faker()
 
         self.stdout.write("Deleting old players")
         # Delete all players and their associated users
