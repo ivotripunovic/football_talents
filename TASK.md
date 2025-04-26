@@ -26,6 +26,14 @@
   - [x] Update profile templates
   - [x] Update admin interface
 
+- [ ] Football Manager user Implementation
+  - [ ] Create databased model for user Manager
+  - [ ] Create Manager model with contact data, regions covered, clubs worked for, and biography
+  - [ ] Update admin interface for Manager model
+  - [ ] Create/update forms for Manager input
+  - [ ] Write unit tests for Manager model and functionalities
+  - [ ] Update project documentation for new Manager role
+
 ## Completed Features
 - [x] Project Setup
   - [x] Basic project structure
